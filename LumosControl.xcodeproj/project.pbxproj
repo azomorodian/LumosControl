@@ -1,0 +1,684 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA1AAEE42E6A7B2A002A7677 /* LumosControlTests in Resources */ = {isa = PBXBuildFile; fileRef = BA1AAEE32E6A7B24002A7677 /* LumosControlTests */; };
+		BA1AAEE62E6A7B37002A7677 /* LumosControlUITests in Resources */ = {isa = PBXBuildFile; fileRef = BA1AAEE52E6A7B30002A7677 /* LumosControlUITests */; };
+		BA1AAEE92E6ADB93002A7677 /* LampsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8379D92E6A6EDD001BF881 /* LampsViewModel.swift */; };
+		BA1AAEEA2E6ADB9E002A7677 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8379C72E6A6B12001BF881 /* UserProfile.swift */; };
+		BA1AAEEB2E6ADBA6002A7677 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8379C62E6A6B12001BF881 /* Restaurant.swift */; };
+		BA1AAEEC2E6ADBAE002A7677 /* Lamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8379C52E6A6B12001BF881 /* Lamp.swift */; };
+		BA1AAEED2E6B3BFD002A7677 /* FirestoreServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8379C32E6A6642001BF881 /* FirestoreServices.swift */; };
+		BA1AAEEF2E6DCF2E002A7677 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1AAEEE2E6DCF12002A7677 /* AuthService.swift */; };
+		BA1AAEF82E6DEE47002A7677 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1AAEF72E6DEE47002A7677 /* GoogleService-Info.plist */; };
+		BA1AAF002E7215E1002A7677 /* AddLampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1AAEFF2E7215C8002A7677 /* AddLampViewModel.swift */; };
+		BA1AAF022E724EB3002A7677 /* ProvisioningModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1AAF012E724E96002A7677 /* ProvisioningModels.swift */; };
+		BA1AAF042E724F96002A7677 /* DeviceProvisioningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1AAF032E724F83002A7677 /* DeviceProvisioningService.swift */; };
+		BA1AAF0A2E725D8B002A7677 /* WiFiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1AAF092E725D7B002A7677 /* WiFiManager.swift */; };
+		BA1AAF1A2E7639D6002A7677 /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1AAF192E7639C6002A7677 /* Invitation.swift */; };
+		BA8379B42E6A5E00001BF881 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BA8379B32E6A5E00001BF881 /* FirebaseAuth */; };
+		BA8379B62E6A5E00001BF881 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BA8379B52E6A5E00001BF881 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA8379962E6A5A4B001BF881 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA8379802E6A5A49001BF881 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA8379872E6A5A49001BF881;
+			remoteInfo = LumosControl;
+		};
+		BA8379A02E6A5A4C001BF881 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA8379802E6A5A49001BF881 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA8379872E6A5A49001BF881;
+			remoteInfo = LumosControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA1AAEE32E6A7B24002A7677 /* LumosControlTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LumosControlTests; sourceTree = "<group>"; };
+		BA1AAEE52E6A7B30002A7677 /* LumosControlUITests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LumosControlUITests; sourceTree = "<group>"; };
+		BA1AAEEE2E6DCF12002A7677 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		BA1AAEF72E6DEE47002A7677 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA1AAEFF2E7215C8002A7677 /* AddLampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLampViewModel.swift; sourceTree = "<group>"; };
+		BA1AAF012E724E96002A7677 /* ProvisioningModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisioningModels.swift; sourceTree = "<group>"; };
+		BA1AAF032E724F83002A7677 /* DeviceProvisioningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceProvisioningService.swift; sourceTree = "<group>"; };
+		BA1AAF092E725D7B002A7677 /* WiFiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiManager.swift; sourceTree = "<group>"; };
+		BA1AAF192E7639C6002A7677 /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
+		BA8379882E6A5A49001BF881 /* LumosControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LumosControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA8379952E6A5A4B001BF881 /* LumosControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumosControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA83799F2E6A5A4C001BF881 /* LumosControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumosControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA8379C32E6A6642001BF881 /* FirestoreServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServices.swift; sourceTree = "<group>"; };
+		BA8379C52E6A6B12001BF881 /* Lamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lamp.swift; sourceTree = "<group>"; };
+		BA8379C62E6A6B12001BF881 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		BA8379C72E6A6B12001BF881 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		BA8379D92E6A6EDD001BF881 /* LampsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampsViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BA1AAEFD2E7210CC002A7677 /* Exceptions for "LumosControl" folder in "LumosControl" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BA8379872E6A5A49001BF881 /* LumosControl */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BA1AAEDF2E6A7B14002A7677 /* LumosControl */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BA1AAEFD2E7210CC002A7677 /* Exceptions for "LumosControl" folder in "LumosControl" target */,
+			);
+			path = LumosControl;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA8379852E6A5A49001BF881 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA8379B42E6A5E00001BF881 /* FirebaseAuth in Frameworks */,
+				BA8379B62E6A5E00001BF881 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA8379922E6A5A4B001BF881 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA83799C2E6A5A4C001BF881 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA83797F2E6A5A49001BF881 = {
+			isa = PBXGroup;
+			children = (
+				BA1AAEF72E6DEE47002A7677 /* GoogleService-Info.plist */,
+				BA8379D82E6A6E6F001BF881 /* Models */,
+				BA8379D72E6A6E2F001BF881 /* ViewModels */,
+				BA8379C22E6A661A001BF881 /* Services */,
+				BA1AAEDF2E6A7B14002A7677 /* LumosControl */,
+				BA1AAEE32E6A7B24002A7677 /* LumosControlTests */,
+				BA1AAEE52E6A7B30002A7677 /* LumosControlUITests */,
+				BA8379892E6A5A49001BF881 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA8379892E6A5A49001BF881 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA8379882E6A5A49001BF881 /* LumosControl.app */,
+				BA8379952E6A5A4B001BF881 /* LumosControlTests.xctest */,
+				BA83799F2E6A5A4C001BF881 /* LumosControlUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA8379C22E6A661A001BF881 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BA1AAF092E725D7B002A7677 /* WiFiManager.swift */,
+				BA1AAF032E724F83002A7677 /* DeviceProvisioningService.swift */,
+				BA1AAEEE2E6DCF12002A7677 /* AuthService.swift */,
+				BA8379C32E6A6642001BF881 /* FirestoreServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		BA8379D72E6A6E2F001BF881 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA1AAEFF2E7215C8002A7677 /* AddLampViewModel.swift */,
+				BA8379D92E6A6EDD001BF881 /* LampsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		BA8379D82E6A6E6F001BF881 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA1AAF192E7639C6002A7677 /* Invitation.swift */,
+				BA1AAF012E724E96002A7677 /* ProvisioningModels.swift */,
+				BA8379C72E6A6B12001BF881 /* UserProfile.swift */,
+				BA8379C62E6A6B12001BF881 /* Restaurant.swift */,
+				BA8379C52E6A6B12001BF881 /* Lamp.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA8379872E6A5A49001BF881 /* LumosControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA8379A92E6A5A4C001BF881 /* Build configuration list for PBXNativeTarget "LumosControl" */;
+			buildPhases = (
+				BA8379842E6A5A49001BF881 /* Sources */,
+				BA8379852E6A5A49001BF881 /* Frameworks */,
+				BA8379862E6A5A49001BF881 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BA1AAEDF2E6A7B14002A7677 /* LumosControl */,
+			);
+			name = LumosControl;
+			packageProductDependencies = (
+				BA8379B32E6A5E00001BF881 /* FirebaseAuth */,
+				BA8379B52E6A5E00001BF881 /* FirebaseFirestore */,
+			);
+			productName = LumosControl;
+			productReference = BA8379882E6A5A49001BF881 /* LumosControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA8379942E6A5A4B001BF881 /* LumosControlTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA8379AC2E6A5A4C001BF881 /* Build configuration list for PBXNativeTarget "LumosControlTests" */;
+			buildPhases = (
+				BA8379912E6A5A4B001BF881 /* Sources */,
+				BA8379922E6A5A4B001BF881 /* Frameworks */,
+				BA8379932E6A5A4B001BF881 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA8379972E6A5A4B001BF881 /* PBXTargetDependency */,
+			);
+			name = LumosControlTests;
+			packageProductDependencies = (
+			);
+			productName = LumosControlTests;
+			productReference = BA8379952E6A5A4B001BF881 /* LumosControlTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BA83799E2E6A5A4C001BF881 /* LumosControlUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA8379AF2E6A5A4C001BF881 /* Build configuration list for PBXNativeTarget "LumosControlUITests" */;
+			buildPhases = (
+				BA83799B2E6A5A4C001BF881 /* Sources */,
+				BA83799C2E6A5A4C001BF881 /* Frameworks */,
+				BA83799D2E6A5A4C001BF881 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA8379A12E6A5A4C001BF881 /* PBXTargetDependency */,
+			);
+			name = LumosControlUITests;
+			packageProductDependencies = (
+			);
+			productName = LumosControlUITests;
+			productReference = BA83799F2E6A5A4C001BF881 /* LumosControlUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA8379802E6A5A49001BF881 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					BA8379872E6A5A49001BF881 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					BA8379942E6A5A4B001BF881 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = BA8379872E6A5A49001BF881;
+					};
+					BA83799E2E6A5A4C001BF881 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = BA8379872E6A5A49001BF881;
+					};
+				};
+			};
+			buildConfigurationList = BA8379832E6A5A49001BF881 /* Build configuration list for PBXProject "LumosControl" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA83797F2E6A5A49001BF881;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BA8379B22E6A5E00001BF881 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = BA8379892E6A5A49001BF881 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA8379872E6A5A49001BF881 /* LumosControl */,
+				BA8379942E6A5A4B001BF881 /* LumosControlTests */,
+				BA83799E2E6A5A4C001BF881 /* LumosControlUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA8379862E6A5A49001BF881 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA1AAEE42E6A7B2A002A7677 /* LumosControlTests in Resources */,
+				BA1AAEF82E6DEE47002A7677 /* GoogleService-Info.plist in Resources */,
+				BA1AAEE62E6A7B37002A7677 /* LumosControlUITests in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA8379932E6A5A4B001BF881 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA83799D2E6A5A4C001BF881 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA8379842E6A5A49001BF881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA1AAEEB2E6ADBA6002A7677 /* Restaurant.swift in Sources */,
+				BA1AAF042E724F96002A7677 /* DeviceProvisioningService.swift in Sources */,
+				BA1AAEEA2E6ADB9E002A7677 /* UserProfile.swift in Sources */,
+				BA1AAEEF2E6DCF2E002A7677 /* AuthService.swift in Sources */,
+				BA1AAF0A2E725D8B002A7677 /* WiFiManager.swift in Sources */,
+				BA1AAF002E7215E1002A7677 /* AddLampViewModel.swift in Sources */,
+				BA1AAF022E724EB3002A7677 /* ProvisioningModels.swift in Sources */,
+				BA1AAEE92E6ADB93002A7677 /* LampsViewModel.swift in Sources */,
+				BA1AAF1A2E7639D6002A7677 /* Invitation.swift in Sources */,
+				BA1AAEED2E6B3BFD002A7677 /* FirestoreServices.swift in Sources */,
+				BA1AAEEC2E6ADBAE002A7677 /* Lamp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA8379912E6A5A4B001BF881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA83799B2E6A5A4C001BF881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA8379972E6A5A4B001BF881 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA8379872E6A5A49001BF881 /* LumosControl */;
+			targetProxy = BA8379962E6A5A4B001BF881 /* PBXContainerItemProxy */;
+		};
+		BA8379A12E6A5A4C001BF881 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA8379872E6A5A49001BF881 /* LumosControl */;
+			targetProxy = BA8379A02E6A5A4C001BF881 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BA8379A72E6A5A4C001BF881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BA8379A82E6A5A4C001BF881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA8379AA2E6A5A4C001BF881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LumosControl/LumosControl.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LumosControl/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LumosControl;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajirak-bms.LumosControl";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = MANUAL_WIFI;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA8379AB2E6A5A4C001BF881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LumosControl/LumosControl.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LumosControl/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LumosControl;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajirak-bms.LumosControl";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BA8379AD2E6A5A4C001BF881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajirak-bms.LumosControlTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LumosControl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LumosControl";
+			};
+			name = Debug;
+		};
+		BA8379AE2E6A5A4C001BF881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajirak-bms.LumosControlTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LumosControl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LumosControl";
+			};
+			name = Release;
+		};
+		BA8379B02E6A5A4C001BF881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajirak-bms.LumosControl";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LumosControl;
+			};
+			name = Debug;
+		};
+		BA8379B12E6A5A4C001BF881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AVTFVZFZA3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ajirak-bms.LumosControl";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LumosControl;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA8379832E6A5A49001BF881 /* Build configuration list for PBXProject "LumosControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA8379A72E6A5A4C001BF881 /* Debug */,
+				BA8379A82E6A5A4C001BF881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA8379A92E6A5A4C001BF881 /* Build configuration list for PBXNativeTarget "LumosControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA8379AA2E6A5A4C001BF881 /* Debug */,
+				BA8379AB2E6A5A4C001BF881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA8379AC2E6A5A4C001BF881 /* Build configuration list for PBXNativeTarget "LumosControlTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA8379AD2E6A5A4C001BF881 /* Debug */,
+				BA8379AE2E6A5A4C001BF881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA8379AF2E6A5A4C001BF881 /* Build configuration list for PBXNativeTarget "LumosControlUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA8379B02E6A5A4C001BF881 /* Debug */,
+				BA8379B12E6A5A4C001BF881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BA8379B22E6A5E00001BF881 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BA8379B32E6A5E00001BF881 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA8379B22E6A5E00001BF881 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		BA8379B52E6A5E00001BF881 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA8379B22E6A5E00001BF881 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BA8379802E6A5A49001BF881 /* Project object */;
+}
