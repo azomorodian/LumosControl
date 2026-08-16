@@ -1,11 +1,13 @@
 <div align="center">
 
+<img src="hardware/firmware/Lumos_Icon.png" alt="Lumos Control" width="220" />
+
 # Lumos Control
 ### Smart IoT Restaurant Table & Lighting Management System
 
 [![IoT](https://img.shields.io/badge/Domain-IoT%20Hospitality-0B1D36?style=for-the-badge)](#system-architecture)
-[![ESP](https://img.shields.io/badge/Hardware-ESP%20Wi--Fi%20SoC-E03C31?style=for-the-badge)](#hardware--firmware-specifications)
-[![CodeVisionAVR](https://img.shields.io/badge/Firmware-CodeVisionAVR%20%2F%20C-00599C?style=for-the-badge)](#hardware--firmware-specifications)
+[![ESP32](https://img.shields.io/badge/Hardware-ESP32-E03C31?style=for-the-badge)](#hardware--firmware-specifications)
+[![Arduino](https://img.shields.io/badge/Firmware-Arduino%20%2F%20C%2B%2B-00979D?style=for-the-badge)](#hardware--firmware-specifications)
 [![Swift](https://img.shields.io/badge/App-SwiftUI%20%7C%20iOS%20%26%20iPadOS-F05138?style=for-the-badge)](#software-applications)
 [![NeoPixel](https://img.shields.io/badge/Lighting-WS2812B%20%2F%20SK6812-00C853?style=for-the-badge)](#interactive-neopixel-ambiance-engine)
 [![B2B](https://img.shields.io/badge/Market-B2B%20Commercial-C9A227?style=for-the-badge)](#commercialization-licensing--partnership-opportunities)
@@ -24,7 +26,7 @@
 
 The system in this repository is a **fully functional commercial control plane**:
 
-- Table-side **ESP-class smart lamps** join the venue Wi-Fi after a one-time SoftAP provisioning flow.
+- Table-side **ESP32 smart lamps** (`hardware/firmware/LumosFW.ino`) join the venue Wi-Fi after a one-time SoftAP provisioning flow.
 - A **native Apple staff application** (SwiftUI, iPhone and iPad) authenticates operators, maps every lamp to a table, and pushes lighting and service commands in real time.
 - **Firebase Authentication** and **Cloud Firestore** provide the multi-tenant restaurant backend — live lamp state, waiter calls, reservations, staff invitations, and subscription-aware venue records.
 
@@ -41,8 +43,8 @@ Each lamp is bound to a table (`tableName`, `tableNumber`) and publishes a live 
 | Capability | What staff see | Data contract |
 | --- | --- | --- |
 | **Reservation status** | One-tap **Reserved / Available** on the lamp detail screen. Reserved tables lock live lighting controls so ambiance cannot be changed mid-booking. | `state.tableStatus` → `reserved` \| `available` |
-| **Digital waiter call** | A raised-hand indicator appears on the table grid when a guest calls. Staff clear the call from the list. | `state.callStatus` → `calling` \| `none` |
-| **Kitchen / food-readiness channel** | The same live table-status pipe carries operational updates from kitchen to floor (food ready, in preparation, or custom venue states) so lighting and the staff grid stay in sync. | Extensible `state.tableStatus` string on the lamp document |
+| **Digital waiter call** | A guest tap on the lamp’s touch input (`GPIO 4`) publishes a call. The strip flashes blue twice; a raised-hand indicator appears on the staff grid. Staff clear the call from the list. | `state.callStatus` → `calling` \| `none` |
+| **Kitchen / food-readiness channel** | Kitchen can push the `notify_food` lighting effect — a slow green pulse on the table lamp — so floor staff see “food ready” without leaving the pass. | `control.effect` → `notify_food` |
 | **Device health** | Online/offline LED, last-seen timestamp, and low-battery warning below 20%. | `state.isOnline`, `state.lastSeen`, `state.batteryPercent` |
 
 Venue owners also assign **table identity** (name and number) per lamp and can factory-reset a device by issuing a `Hard_Reset!` control effect before the cloud record is removed.
@@ -54,9 +56,14 @@ Lighting is not a decorative extra — it is a programmable **ambiance engine**.
 | Staff mode | Firmware `effect` token | Intent |
 | --- | --- | --- |
 | **Custom brand color / static theme** | `static` | Solid RGB from the in-app color picker (`control.color`, hex) at `control.brightness` 0–100. Default factory theme: `#FFFFFF` @ 80%. |
-| **Romantic candle flicker** | `candle` / `flicker` | Warm, irregular luminance for intimate dining. |
-| **Smooth rainbow wave** | `rainbow` | Continuous hue travel across the strip for lounge and event service. |
-| **Music / beat-reactive pulse** | `pulse` | Rhythmic brightness envelope for bars, live nights, and brand activations. |
+| **Romantic candle flicker** | `candle` | Warm orange/yellow per-pixel flicker with randomized timing (50–150 ms). |
+| **Classic flicker** | `flicker` | Random luminance drop per LED on the current brand color. |
+| **Smooth rainbow wave** | `rainbow` | `Adafruit_NeoPixel::rainbow()` hue travel across the 24-LED ring. |
+| **Music / beat-reactive pulse** | `pulse` | Sine-wave brightness envelope on the selected color. |
+| **Chaser** | `chaser` | Single-pixel chase around the ring. |
+| **Food-ready notify** | `notify_food` | Slow green pulse for kitchen-to-floor signaling. |
+| **Reserved override** | *(table status)* | When `state.tableStatus` is `reserved`, firmware forces a deep-red sine pulse (`0xFF0000`) and ignores ambiance effects. |
+| **Factory wipe** | `Hard_Reset!` | Clears NVS credentials and reboots into SoftAP setup. |
 
 All lamps on a venue share the same Wi-Fi fabric. The SwiftUI terminal applies per-table control or walks the live grid — **batch operations at venue scale** from one authenticated session, with 500 ms debounced writes so slider and color-picker gestures do not flood the bus.
 
@@ -68,8 +75,8 @@ Lumos Control is a **cloud-synchronized, locally provisioned** IoT stack. Lamps 
 
 ```
 ┌─────────────────────────────────┐         ┌──────────────────────┐         ┌──────────────────────────────────┐
-│  ESP Smart Lamp + NeoPixels     │         │  Venue Wi-Fi LAN     │         │  Apple Staff Terminal             │
-│  SoftAP · WS2812B/SK6812 · AVR  │ ◄─────► │  Local access point  │ ◄─────► │  SwiftUI · iPhone / iPad          │
+│  ESP32 Smart Lamp + NeoPixels   │         │  Venue Wi-Fi LAN     │         │  Apple Staff Terminal             │
+│  LumosFW.ino · SoftAP · NVS     │ ◄─────► │  Local access point  │ ◄─────► │  SwiftUI · iPhone / iPad          │
 │  GET /device_id  POST /configure│         │                      │         │  (tablets on the pass & floor)   │
 └─────────────────────────────────┘         └──────────┬───────────┘         └────────────────┬─────────────────┘
                                                        │                                      │
@@ -82,7 +89,7 @@ Lumos Control is a **cloud-synchronized, locally provisioned** IoT stack. Lamps 
 ```mermaid
 flowchart LR
     subgraph Floor["Restaurant floor"]
-        L["ESP smart lamp<br/>NeoPixel strip"]
+        L["ESP32 · LumosFW.ino<br/>24× NeoPixel + touch"]
     end
     subgraph LAN["Venue Wi-Fi"]
         AP["Access point"]
@@ -122,31 +129,35 @@ Invitation records live in a top-level `invitations` collection (`pending` → `
 
 ## Hardware & Firmware Specifications
 
-Firmware binaries and schematic packages are delivered to manufacturing and distribution partners. This repository publishes the **control-plane contract** the hardware must implement.
+Shipping firmware lives in **`hardware/firmware/LumosFW.ino`** — an Arduino C++ sketch for the ESP32 family. It drives the NeoPixel ring directly (no separate lighting MCU), stores venue credentials in NVS, and talks to Cloud Firestore over the venue Wi-Fi.
 
 ### Bill of materials (commercial lamp)
 
 | Assembly | Specification | Role |
 | --- | --- | --- |
-| **Wi-Fi SoC** | ESP-family module (2.4 GHz, SoftAP + STA) | Captive provisioning AP, HTTPS/TLS session to Firebase, lamp identity (`device_id`). |
-| **Lighting MCU** | AVR core programmed with **CodeVisionAVR / C** | Deterministic, non-blocking WS2812B / SK6812 bit timing and animation state machine. |
-| **LED array** | Addressable **NeoPixel** strip or ring — **WS2812B** or **SK6812** (RGB / RGBW) | Guest-facing ambiance; brightness scaled 0–100 from cloud `control`. |
-| **Power** | 5 V regulated rail sized for LED peak current + RF; battery telemetry optional | `state.batteryPercent` is first-class in the lamp document (low-battery UI at &lt; 20%). |
+| **Wi-Fi SoC** | ESP32-family module (Arduino core; 2.4 GHz SoftAP + STA) | Provisioning AP, Firestore client, LED engine, touch sampling. |
+| **LED array** | 24 × addressable **NeoPixel** (WS2812B / SK6812), data on **GPIO 3** | Guest-facing ambiance; brightness mapped from cloud 0–100 → 0–255. |
+| **Touch input** | Pulse source on **GPIO 4** (`pulseIn`) | Guest waiter-call. Ignored while the table is reserved. |
+| **Power** | 5 V rail sized for LED peak current + RF | `state.batteryPercent` is reserved on the lamp document (low-battery UI at &lt; 20%). |
 | **Mechanics** | Custom hospitality casing (table lamp / pendant / under-liner) | OEM-ready; CAD and material changes are part of partner hardware adaptation. |
-| **Identity** | Unique `deviceId` exposed on `GET /device_id` | Bound to `restaurants/{id}/lamps` at first successful cloud registration. |
+| **Identity** | ESP eFuse MAC formatted as `AA:BB:CC:DD:EE:FF` | SoftAP name `Lumos-Setup-<last2>`; Firestore `deviceId` at first registration. |
 
-### Firmware behavior
+### Firmware runtime (`LumosFW.ino`)
 
-- **Non-blocking loop.** LED frames and Wi-Fi / Firestore I/O are scheduled independently so a rainbow cycle cannot delay a waiter-call publish.
-- **Provisioning HTTP API** (SoftAP, no TLS on the setup LAN — ATS `NSAllowsArbitraryLoads` is enabled in the app for this hop only):
+- **Non-blocking loop.** LED frames (~50 ms), reserved pulse (~30 ms), Firestore polls, and touch sampling are scheduled independently.
+- **Timing:** control poll **5 s**, table-state poll **3 s**, heartbeat **5 min**, NTP via `pool.ntp.org`.
+- **Provisioning HTTP API** on SoftAP `http://192.168.4.1` (ATS `NSAllowsArbitraryLoads` is enabled in the iOS app for this hop only):
 
   | Method | Path | Body / response |
   | --- | --- | --- |
-  | `GET` | `/device_id` | `{ "device_id": "<unique>" }` |
-  | `POST` | `/configure` | `{ "ssid": "<venue>", "password": "<psk>", "restaurant_id": "<id>" }` → `{ "status": "success" }` |
+  | `GET` | `/device_id` | `{ "device_id": "<MAC>" }` |
+  | `POST` | `/configure` | `{ "ssid": "<venue>", "password": "<psk>", "restaurant_id": "<id>" }` → `{ "status": "success" }` then reboot |
 
-- **Control plane.** Firmware watches `control.brightness`, `control.color`, `control.effect`. Token `Hard_Reset!` triggers local wipe; the cloud document is deleted after a 10-second settle so the device can leave the fleet cleanly.
-- **Telemetry.** `state.isOnline`, `state.lastSeen`, `state.batteryPercent`, `state.tableStatus`, `state.callStatus`.
+- **NVS namespace `config`.** After a successful `/configure`, firmware stores `ssid`, `password`, and `restaurant_id`. On next boot it joins STA mode. Failed Wi-Fi or a `Hard_Reset!` effect clears NVS and returns to SoftAP (green blink).
+- **Self-registration.** After Firebase Auth, the lamp queries `restaurants/{id}/lamps` by `deviceId`. If missing, it creates the document (`tableName` = `New Lamp`, brightness `80`, color `#FFFFFF`, effect `static`).
+- **Control plane.** Firmware consumes `control.brightness`, `control.color`, `control.effect`. Token `Hard_Reset!` wipes NVS and reboots; the iOS app then deletes the cloud document after a 10-second settle.
+- **Telemetry.** Heartbeat patches `state.isOnline` and `state.lastSeen`. Touch patches `state.callStatus` = `calling`.
+- **Credentials.** Firebase Web API key and device Auth email/password are **not** in the sketch. Copy `hardware/firmware/secrets.h.example` → `secrets.h` (gitignored) before flashing.
 
 ### Lamp document (Firestore)
 
@@ -157,7 +168,7 @@ restaurants/{restaurantId}/lamps/{lampId}
 └── control  { brightness, color, effect }
 ```
 
-New lamps are created with `tableName = "New Table"`, `tableNumber = 0`, brightness `80`, color `#FFFFFF`, effect `static`, then renamed from **Edit Lamp**.
+New lamps are created by firmware as `tableName = "New Lamp"`, `tableNumber = 0`, brightness `80`, color `#FFFFFF`, effect `static`, then renamed from **Edit Lamp**.
 
 ---
 
@@ -223,16 +234,38 @@ If you can sell and support hospitality IoT in your country, the product can be 
 
 ## Installation, Hardware Setup & Flashing
 
-### 1. Flash the ESP / AVR firmware
+### 1. Flash `LumosFW` (ESP32)
 
-Companion firmware is supplied to manufacturing partners (CodeVisionAVR project for the lighting engine, C/C++ image for the ESP Wi-Fi SoC). Typical production line:
+**Toolchain:** Arduino IDE (or Arduino CLI) with **ESP32 board support**.
 
-1. Program the AVR lighting MCU from CodeVisionAVR (release HEX, fuse bits per the hardware package).
-2. Flash the ESP module over UART (bootloader, then application image that implements SoftAP + Firestore client).
-3. Power the lamp on a current-limited 5 V bench supply and confirm the SoftAP SSID `Lumos-Setup-…` appears.
-4. Smoke-test `GET http://192.168.4.1/device_id` from any HTTP client on that AP.
+**Libraries (Library Manager):**
 
-Do not connect the LED rail to an undersized USB port; addressable strips need a dedicated 5 V supply and common ground with the SoC.
+| Library | Used for |
+| --- | --- |
+| `Firebase ESP Client` (mobizt) | Firestore get / patch / query / create |
+| `Adafruit NeoPixel` | 24-LED ring on GPIO 3 |
+| `ArduinoJson` | `/configure` JSON body |
+
+**Secrets (required, never committed):**
+
+```text
+cd hardware/firmware
+copy secrets.h.example secrets.h     # Windows
+# cp secrets.h.example secrets.h     # macOS / Linux
+```
+
+Fill `API_KEY`, `FIREBASE_PROJECT_ID`, `USER_EMAIL`, and `USER_PASSWORD` from the Firebase Console (use a dedicated device service account, not a personal login). `secrets.h` is gitignored.
+
+**Upload:**
+
+1. Open `hardware/firmware/LumosFW.ino`.
+2. Select your ESP32 board and the correct COM/UART port.
+3. Confirm pin map matches the PCB: NeoPixel data **GPIO 3**, touch **GPIO 4**, 24 LEDs.
+4. Upload. Open Serial Monitor at **115200 baud**.
+5. On first boot (empty NVS) the lamp starts SoftAP `Lumos-Setup-…` and blinks green. Confirm `AP IP: 192.168.4.1`.
+6. Optional smoke test: join the AP and `GET http://192.168.4.1/device_id`.
+
+Do not power the LED ring from an undersized USB port; the strip needs a dedicated 5 V supply and common ground with the ESP32.
 
 ### 2. Commission the lamp onto a restaurant
 
@@ -272,13 +305,17 @@ LoginView
 
 ```text
 LumosControl/
-├── LumosControl/                 SwiftUI scenes (login, grid, detail, provisioning, invitations)
-├── Models/                       Lamp, Restaurant, UserProfile, Invitation, provisioning DTOs
-├── ViewModels/                   LampsViewModel, AddLampViewModel
-├── Services/                     Auth, Firestore, SoftAP provisioning, Wi-Fi helper
-├── LumosControlTests/            Unit test target
-├── LumosControlUITests/          UI test target
-├── GoogleService-Info.plist.example   Firebase template (no secrets)
+├── hardware/firmware/
+│   ├── LumosFW.ino                    ESP32 Arduino firmware
+│   ├── secrets.h.example              Firebase template (no secrets)
+│   └── Lumos_Icon.png                 Product mark
+├── LumosControl/                      SwiftUI scenes (login, grid, detail, provisioning, invitations)
+├── Models/                            Lamp, Restaurant, UserProfile, Invitation, provisioning DTOs
+├── ViewModels/                        LampsViewModel, AddLampViewModel
+├── Services/                          Auth, Firestore, SoftAP provisioning, Wi-Fi helper
+├── LumosControlTests/                 Unit test target
+├── LumosControlUITests/               UI test target
+├── GoogleService-Info.plist.example   iOS Firebase template (no secrets)
 └── LumosControl.xcodeproj             Xcode project (iPhone + iPad)
 ```
 

@@ -106,6 +106,8 @@ struct LampDetailView: View {
                     Text("Candle").tag("candle")
                     Text("Flicker").tag("flicker")
                     Text("Rainbow").tag("rainbow")
+                    Text("Chaser").tag("chaser")
+                    Text("Food Ready").tag("notify_food")
                 }
                 .onChange(of: effect) { _ in sendUpdateRequestWithDebounce()}
             }

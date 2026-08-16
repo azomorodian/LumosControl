@@ -1,5 +1,6 @@
 # Live Firebase credentials — never commit API keys
 GoogleService-Info.plist
+hardware/firmware/secrets.h
 
 # Local environment secrets
 .env
