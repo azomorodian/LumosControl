@@ -1,0 +1,7 @@
+# Live Firebase credentials — never commit API keys
+GoogleService-Info.plist
+
+# Local environment secrets
+.env
+.env.*
+!.env.example

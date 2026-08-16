@@ -247,9 +247,10 @@ Do not connect the LED rail to an undersized USB port; addressable strips need a
 
 ```text
 1. Clone  git clone https://github.com/azomorodian/LumosControl.git
-2. Open   LumosControl.xcodeproj
-3. Confirm GoogleService-Info.plist is present at the project root
-          (Firebase Auth + Firestore; project id smart-restaurant-lamps).
+2. Copy   GoogleService-Info.plist.example → GoogleService-Info.plist
+          and fill in values from your Firebase Console (iOS app).
+          Do not commit GoogleService-Info.plist — it is gitignored.
+3. Open   LumosControl.xcodeproj
 4. Select the LumosControl scheme, a connected iPhone or iPad, and Run.
 5. Sign up as Restaurant Owner, create the venue, then provision lamps.
 ```
@@ -277,8 +278,8 @@ LumosControl/
 ├── Services/                     Auth, Firestore, SoftAP provisioning, Wi-Fi helper
 ├── LumosControlTests/            Unit test target
 ├── LumosControlUITests/          UI test target
-├── GoogleService-Info.plist      Firebase iOS configuration
-└── LumosControl.xcodeproj        Xcode project (iPhone + iPad)
+├── GoogleService-Info.plist.example   Firebase template (no secrets)
+└── LumosControl.xcodeproj             Xcode project (iPhone + iPad)
 ```
 
 ---
